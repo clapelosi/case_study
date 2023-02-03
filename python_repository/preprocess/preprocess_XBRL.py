@@ -1,9 +1,11 @@
 from bs4 import BeautifulSoup, NavigableString, Tag 
 import pandas as pd
 import numpy as np
+import os 
+os.chdir("./case_study")
 from support_functions import clean_text, structure_xml, get_attribs_val, get_omogeneus_data
 
-with open('./data/bilancio_test.xml', 'r') as f:
+with open(r'C:\Users\39389\OneDrive\Desktop\my_repos\case_study\data\bilancio_test.xml', 'r') as f:
     file = f.read()
 soup = BeautifulSoup(file, 'xml')
 xbrl = soup.body.xbrl
@@ -41,7 +43,7 @@ lengths = list(set(map(len, a)))
 data_by_length = []
 for i in range(len(lengths)):
     data_by_length.append(get_omogeneus_data(a, lengths[i]))
-#    exec(f'data_{i} = data_i')
+#    exec(f'data_{i} = data_i')               #not good method to not define the variables
 
 
 header_3 = ['contextref', 'voice', 'description']
@@ -55,9 +57,4 @@ main_fin_stat_raw_2_df = pd.DataFrame(data_by_length[2], columns=header_6)
 master_fin_stat_raw_df.to_csv('./cleaned_data/master_fin_stat_raw.csv', index=False, header=True)
 main_fin_stat_raw_df.to_csv('./cleaned_data/main_fin_stat_raw.csv', index=False, header=True)
 main_fin_stat_raw_2_df.to_csv('./cleaned_data/main_fin_stat_raw_2.csv', index=False, header=True)
-
-#a = structure_xml(xbrl)
-print('this is th efirst output:', xbrl.find_all('context') ,'\n')
-
-print('this is the second output:',list(xbrl.children))
   

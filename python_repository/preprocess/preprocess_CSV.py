@@ -4,7 +4,7 @@ from support_functions import trans
 import os 
 os.chdir("./case_study")
 
-transaction_df = pd.read_csv('case_study/data/Transazioni_Azienda_ABC.csv')
+transaction_df = pd.read_csv(r"C:\Users\39389\OneDrive\Desktop\my_repos\case_study\data\Transazioni_Azienda_ABC.csv")
 transaction_df.rename(columns = {'data ':'date', 'categoria':'category', 'amount':'amt'}, inplace = True)
 transaction_df['date'] = pd.to_datetime(transaction_df['date'], format="%d/%m/%Y")
 transaction_df.replace(to_replace=r'€ ', value='', regex=True, inplace=True)

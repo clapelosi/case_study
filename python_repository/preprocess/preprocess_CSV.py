@@ -4,7 +4,7 @@ from support_functions import trans
 import os 
 os.chdir("./case_study")
 
-transaction_df = pd.read_csv(r"C:\Users\39389\OneDrive\Desktop\my_repos\case_study\data\Transazioni_Azienda_ABC.csv")
+transaction_df = pd.read_csv(r"C:\Users\39389\OneDrive\Desktop\my_repos\case_study\files\Transazioni_Azienda_ABC.csv")
 transaction_df.rename(columns = {'data ':'date', 'categoria':'category', 'amount':'amt'}, inplace = True)
 transaction_df['date'] = pd.to_datetime(transaction_df['date'], format="%d/%m/%Y")
 transaction_df.replace(to_replace=r'€ ', value='', regex=True, inplace=True)
@@ -14,7 +14,7 @@ transaction_df['amt'] = transaction_df['amt'].astype('float64')
 
 trans_transformed1_df = pd.get_dummies(transaction_df, columns=['category'])
 
-trans_transformed1_df.to_csv('./cleaned_data/trans_transformed1.csv', index=False, header=True)
+trans_transformed1_df.to_csv('./raw_data/trans_transformed1.csv', index=False, header=True)
 
 
 for i in range(2,trans_transformed1_df.shape[1]):
@@ -32,7 +32,7 @@ trans_transformed2_df.rename(columns = {'category_EROGAZIONE FINANZIAMENTO':'loa
 
 trans_transformed2_df.drop(columns=['amt'], inplace=True)
 
-trans_transformed2_df.to_csv('./cleaned_data/trans_transformed2.csv', index=False, header=True)
+trans_transformed2_df.to_csv('./raw_data/trans_transformed2.csv', index=False, header=True)
 
 
 

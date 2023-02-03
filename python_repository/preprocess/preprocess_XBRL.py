@@ -5,7 +5,7 @@ import os
 os.chdir("./case_study")
 from support_functions import clean_text, structure_xml, get_attribs_val, get_omogeneus_data
 
-with open(r'C:\Users\39389\OneDrive\Desktop\my_repos\case_study\data\bilancio_test.xml', 'r') as f:
+with open(r'C:\Users\39389\OneDrive\Desktop\my_repos\case_study\files\bilancio_test.xml', 'r') as f:
     file = f.read()
 soup = BeautifulSoup(file, 'xml')
 xbrl = soup.body.xbrl
@@ -54,7 +54,7 @@ master_fin_stat_raw_df = pd.DataFrame(data_by_length[0], columns=header_3)
 main_fin_stat_raw_df = pd.DataFrame(data_by_length[1], columns=header_5)
 main_fin_stat_raw_2_df = pd.DataFrame(data_by_length[2], columns=header_6)
 
-master_fin_stat_raw_df.to_csv('./cleaned_data/master_fin_stat_raw.csv', index=False, header=True)
-main_fin_stat_raw_df.to_csv('./cleaned_data/main_fin_stat_raw.csv', index=False, header=True)
-main_fin_stat_raw_2_df.to_csv('./cleaned_data/main_fin_stat_raw_2.csv', index=False, header=True)
+master_fin_stat_raw_df.to_csv('./raw_data/master_fin_stat_raw.csv', index=False, header=True)
+main_fin_stat_raw_df.to_csv('./raw_data/main_fin_stat_raw.csv', index=False, header=True)
+main_fin_stat_raw_2_df.to_csv('./raw_data/main_fin_stat_raw_2.csv', index=False, header=True)
   

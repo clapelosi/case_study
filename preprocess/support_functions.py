@@ -24,7 +24,7 @@ def structure_xml(child):
       return a + structure_xml(child.next_sibiling) + structure_xml(child.child)
    
 
-   def get_omogeneus_data(a, i):
+def get_omogeneus_data(a, i):
     data = []
     for j in range(len(a)):
         if len(a[j]) == i:
@@ -32,7 +32,7 @@ def structure_xml(child):
 
     return data 
    
-   def trans(input_df,i,j):
+def trans(input_df,i,j):
     input_df.iloc[:,i] = input_df.iloc[:,i]*input_df.iloc[:,j]
     output_df = input_df
     
